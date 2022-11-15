@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import * as Layout from './App/Layout'
+import {Route, Routes} from "react-router-dom";
+import {CheckAuth} from "./components/CheckAuth";
+import Header from "./components/Header";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+	const App = () => {
+	return (
+		<React.Fragment>
+			<Header/>
+      <Routes>
+				<Route path={'/'} element={<CheckAuth/>}>
+					<Route path={'/'} element={<Layout.Main/>}/>
+					<Route path={'/admin'} element={<Layout.Admin/>}/>
+				</Route>
+			</Routes>
+		</React.Fragment>
+	);
+};
 
 export default App;
+
+// Основные роуты api:
+//
+// /registration - для регистрации(в response получаем access_token)
+// /login  - для авторизации (в response получаем access_token)
+// /logout - для выхода с аккаунта нужно отправить refresh_token
+// /todos/create - для создания todo(в запросах headers передать ключ  'Authorization':`Bearer ${accessToken}`)
+// /todos/${id} - для DELETE конкретного todo по id
+// /todos/${id} - для EDIT конкретного todo по id
+// /todos/${id}/completed - чтобы задать статус completed по определённому todo
+// /todos - для GET всех todo
+// /todos/${id} - для GET конкретного todo по id

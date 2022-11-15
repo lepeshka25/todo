@@ -1,0 +1,48 @@
+.header {
+  background: #4087fb;
+  overflow: hidden;
+
+  .header_top {
+    width: 100%;
+    padding: 15px 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .logo {
+      color: white;
+    }
+
+    .burger {
+      width: 30px;
+      height: 30px;
+    }
+  }
+
+  .header_bottom {
+    display: flex;
+    padding: 15px 5%;
+
+    .link {
+      padding: 5px 10px;
+      margin-right: 10px;
+      display: flex;
+      align-items: center;
+      text-transform: uppercase;
+      color: white;
+      border: none;
+
+      &:nth-child(1){
+        background: limegreen;
+      }
+
+      &:nth-child(2){
+        background: red;
+      }
+
+      .icon {
+        margin-right: 10px;
+        font-size: 20px;
+      }
+    }
+  }
+}
