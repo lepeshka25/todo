@@ -21,6 +21,7 @@ const Login = () => {
 					localStorage.setItem('user', JSON.stringify(res.data?.user))
 					localStorage.setItem('isActivated', res.data?.user?.isActivated)
 					navigate('/')
+					window.location.reload();
 				}else {
 					setNoActive(true)
 				}
