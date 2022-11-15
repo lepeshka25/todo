@@ -1,0 +1,40 @@
+.form {
+  width: 90%;
+  background: white;
+  padding: 10px;
+  border-radius: 10px;
+
+  .logo {
+    color: black;
+  }
+
+  .form_body {
+    width: 100%;
+
+    input {
+      padding: 10px 20px;
+      margin: 10px 0;
+      width: 100%;
+    }
+
+    button {
+      padding: 5px 10px;
+      width: 100%;
+      background: #4087fb;
+      color: white;
+    }
+
+    .container_text {
+      text-align: center;
+      font-size: 12px;
+      color: red;
+      padding: 5px 0;
+    }
+
+  }
+
+  .footer {
+    width: 100%;
+    text-align: center;
+  }
+}

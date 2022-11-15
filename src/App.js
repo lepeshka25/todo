@@ -1,5 +1,6 @@
 import React from 'react';
 import * as Layout from './App/Layout'
+import * as Auth from './App/Auth'
 import {Route, Routes} from "react-router-dom";
 import {CheckAuth} from "./components/CheckAuth";
 import Header from "./components/Header";
@@ -13,6 +14,8 @@ import Header from "./components/Header";
 					<Route path={'/'} element={<Layout.Main/>}/>
 					<Route path={'/admin'} element={<Layout.Admin/>}/>
 				</Route>
+				<Route path={'/auth/login'} element={<Auth.Login/>}/>
+				<Route path={'/auth/register'} element={<Auth.Register/>}/>
 			</Routes>
 		</React.Fragment>
 	);
