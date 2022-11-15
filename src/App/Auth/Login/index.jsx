@@ -2,7 +2,6 @@ import React from 'react';
 import Form from "../../../components/Form";
 import {login} from "../../../API";
 import {useNavigate} from "react-router-dom";
-import {useData} from "../../../hook/useData";
 import cs from './style.module.scss'
 
 const Login = () => {

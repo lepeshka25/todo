@@ -74,7 +74,7 @@ const Card = ({title, date, content, id, completed}) => {
 				{
 					completed && (
 						<React.Fragment>
-							<img src={icon} className={cs.icon}/>
+							<img src={icon} className={cs.icon} alt={''}/>
 						</React.Fragment>
 					)
 				}

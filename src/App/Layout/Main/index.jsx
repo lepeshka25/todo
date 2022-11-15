@@ -8,6 +8,7 @@ const Main = () => {
 
 	React.useEffect(() => {
 		setUpdate(state => !state)
+		// eslint-disable-next-line
 	}, [])
 
 	return (
