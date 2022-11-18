@@ -5,14 +5,28 @@ import cs from './style.module.scss'
 
 const Admin = () => {
 	const {setUpdate} = useData()
-	const [state , setState] = React.useState({})
+	const [state, setState] = React.useState({})
+	const [error, setError] = React.useState(null)
 
-	function onSubmit(e){
+	function onSubmit(e) {
 		e.preventDefault()
-		createTodo(state)
-			.then(res => {
-				setUpdate(state => !state)
-			})
+		if (state.title) {
+			if (state.content) {
+				if (state.date) {
+					createTodo(state)
+						.then(res => {
+							setUpdate(state => !state)
+							setError(null)
+						})
+				}else {
+					setError('Ошибка! заполните поле date!')
+				}
+			}else {
+				setError('Ошибка! заполните поле content!')
+			}
+		}else {
+			setError('Ошибка! заполните поле title!')
+		}
 	}
 
 	return (
@@ -33,6 +47,7 @@ const Admin = () => {
 					onChange={e => setState({...state, date: e.target.value})}
 					type="date"
 				/>
+				<p className={cs.error}>{error}</p>
 				<button onClick={onSubmit}>SUBMIT</button>
 			</div>
 		</div>

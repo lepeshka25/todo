@@ -9,6 +9,7 @@ import cs from './style.module.scss'
 const Card = ({title, date, content, id, completed}) => {
 	const {setUpdate} = useData()
 	const [modal , setModal] = React.useState(false)
+	const [error , setError] = React.useState(null)
 	const [db , setDb] = React.useState({
 		title: '',
 		content: '',
@@ -27,12 +28,25 @@ const Card = ({title, date, content, id, completed}) => {
 
 	function ChangeTodo(e){
 		e.preventDefault()
-		changeTodo(id , db)
-			.then(res => {
-				setModal(false)
-				setUpdate(state => !state)
-			})
-		setDb({title: '' , date: '' , content: ''})
+		if(db.title){
+			if(db.content){
+				if(db.date){
+					changeTodo(id , db)
+						.then(res => {
+							setModal(false)
+							setUpdate(state => !state)
+						})
+					setDb({title: '' , date: '' , content: ''})
+					setError(null)
+				}else {
+					setError('Ошибка ! заполните date!')
+				}
+			}else {
+				setError('Ошибка ! заполните content!')
+			}
+		}else {
+			setError('Ошибка ! заполните title!')
+		}
 	}
 
 	return (
@@ -62,6 +76,8 @@ const Card = ({title, date, content, id, completed}) => {
 							onChange={e => setDb({...db, date: e.target.value})}
 							type="date"
 						/>
+
+						<p className={cs.error}>{error}</p>
 
 						<button onClick={ChangeTodo}>SUBMIT</button>
 					</div>
